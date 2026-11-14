@@ -1,0 +1,16 @@
+# Workshop assets
+
+Created with the built-in image generation tool. The approved reading desk and notebook were supplied as style references. These are independent transparent PNG props, not a scene backdrop.
+
+- `creative-terminal.png`: the workstation, keyboard, and its supporting bench.
+- `colony-world.png`: a miniature world that emerges above the screen.
+
+The world is a narrative illustration of building procedural worlds; it is not a screenshot of Pedro's game.
+
+## Final terminal prompt
+
+Use case: illustration-story. Asset type: independent transparent cutout for a cinematic scroll website. Input images are visual STYLE references only: match their fine expressive ink contours, painted paper grain, slightly crooked handmade forms and warm detailed materials. Original 2D mystery adventure cartoon, not photorealistic or a 3D render. Keep true transparency around the irregular silhouette, crisp detailed edges, generous transparent margins, no glow baked outside the object, no lettering, watermark, character or surrounding room. Draw a single whimsical retro creative workstation console, a large CRT computer screen in a rounded midnight-teal and brass housing sitting on a compact sturdy walnut workbench with four short legs; keyboard resting on its top directly in front. Mostly front-facing three-quarter view from slightly above, flat nearly front-facing rectangular screen in the UPPER CENTER of the object; screen is blank dark navy with a restrained aqua inner light, no text. Monitor top should sit about 12 percent below the asset top. A few small copper knobs and carefully placed mechanical details, a cable neatly coiled within its own body. Creative, inviting, ingenious, not sinister. Lighting warm amber from upper left and cool cyan from screen. Single cohesive prop with visibly stable feet, no loose decorative objects.
+
+## Final miniature-world prompt
+
+Use case: illustration-story. Asset type: independent transparent cutout for a cinematic scroll website. Input images are visual STYLE references only: match their fine expressive ink contours, painted paper grain, slightly crooked handmade forms and warm detailed materials. Original 2D mystery adventure cartoon, not photorealistic or a 3D render. Keep true transparency around the irregular silhouette, crisp detailed edges, generous transparent margins, no glow baked outside the object, no lettering, watermark, character or surrounding room. Draw a single miniature procedural colony world as a floating island cutout, layered earthy rock cross-section underneath, emerald and jade grassy terraces, a tiny winding river, a few fir trees and two little orange-roofed wooden structures. Clear readable silhouette and strong size hierarchy; a small white-water waterfall pours over one edge and ends inside the asset. A handful of grass-topped block fragments at the base form one connected growing terrain cluster. Luminous joyful sunlight, warm gold highlights and cool sapphire water, muted violet rock shadows. A detailed but uncluttered handcrafted cartoon miniature, with the same ink and painted texture as references. Three-quarter elevated view. It will appear to be emerging above a computer screen, so do NOT include a computer, desk, sky, portal, projector beam, glass dome or background.

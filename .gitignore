@@ -1,0 +1,3 @@
+# Local browser checks and preserved drafts are not part of the published page.
+.qa/
+previous-preview/

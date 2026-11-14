@@ -1,40 +1,173 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhiteAngelW</title>
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #0b0d17;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    main {
-      padding: 32px;
-    }
-
-    h1 {
-      margin-bottom: 8px;
-      font-size: 3rem;
-    }
-
-    p {
-      color: #aab0c5;
-      font-size: 1.1rem;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee5d5">
+  <meta name="description" content="Pedro, 24, Brazil. A quiet tour through a busy mind.">
+  <title>Pedro — A quiet tour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Bodoni+Moda:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="access-link" href="#closing">Skip the animated sequence</a>
+  <header class="navigation">
+    <a class="signature" href="#start" aria-label="Return to the start">p<span>.</span></a>
+    <span class="chapter-label" aria-hidden="true">01 / A SMALL INTRODUCTION</span>
+    <button class="skip-button" type="button"><span class="skip-label">THE QUIET ROOM</span><span aria-hidden="true">↘</span></button>
+    <div class="progress-track" aria-hidden="true"><span></span></div>
+  </header>
   <main>
-    <h1>WhiteAngelW</h1>
-    <p>Meu espaço na internet está chegando. ✨</p>
+    <section class="journey" id="start" aria-label="A quiet tour through a busy mind">
+      <div class="stage">
+        <div class="entry-backdrop" aria-hidden="true"></div>
+        <div class="world" aria-hidden="true">
+          <img class="landscape" src="assets/opening-hills.png" alt="" fetchpriority="high">
+          <div class="landscape-shade"></div>
+          <div class="house-contact"></div>
+          <div class="traveller-contact"></div>
+          <div class="house-site">
+            <img class="house" src="assets/house-grounded.png" alt="" fetchpriority="high">
+            <div class="house-window-glow"></div>
+            <div class="house-lantern-glow"></div>
+          </div>
+          <img class="terrain" src="assets/cliff-terrain.png" alt="">
+          <img class="branch" src="assets/branch.png" alt="">
+          <div class="traveller">
+            <img class="standing-pose" src="assets/seeker-standing.png" alt="" fetchpriority="high">
+          </div>
+        </div>
+        <div class="intro-panel">
+          <div class="intro-copy">
+            <p class="eyebrow">WHITEANGELW / 24 / BRAZIL</p>
+            <h1>Pedro<span>.</span></h1>
+            <p class="intro-title">A quiet tour<br> through a <em>busy mind.</em></p>
+            <p class="intro-note">People, questions, and the worlds<br> I find myself building.</p>
+            <button class="begin-button" type="button"><span class="circle-arrow">↓</span> BEGIN THE JOURNEY</button>
+          </div>
+        </div>
+        <div class="threshold-copy" aria-hidden="true"><p>Come in.</p></div>
+        <div class="room">
+          <div class="room-top-edge" aria-hidden="true"></div>
+          <div class="room-wall" aria-hidden="true"></div>
+          <div class="room-floor" aria-hidden="true"></div>
+          <div class="room-light" aria-hidden="true"></div>
+          <div class="room-copy"><p class="eyebrow">02 / HOW I OPERATE</p><h2>I like people.<br><em>I recharge alone.</em></h2><p>A game. Something to study. A new rabbit hole.<br class="desktop-break"> That's usually where I go when I disappear.</p><span class="small-note">A little distance doesn't mean I stopped caring.</span></div>
+          <div class="room-furniture" aria-hidden="true">
+            <div class="rug"></div><div class="chair-shadow"></div><div class="chair-feet-shadow"></div><div class="lamp-contact"></div>
+            <img class="chair" src="assets/chair.png" alt="">
+            <div class="lamp-glow"></div><img class="lamp" src="assets/lamp.png" alt="">
+            <div class="side-table"><img src="assets/radio.png" class="room-radio" alt=""><i></i><b></b></div>
+          </div>
+        </div>
+        <div class="entry-light" aria-hidden="true"></div>
+        <div class="page-tunnel" aria-hidden="true"><div class="tunnel-depth"></div></div>
+        <div class="question-book" aria-hidden="true">
+          <div class="book-contact"></div><div class="book-well"></div>
+          <img class="book-leaf book-left" src="assets/research-notebook.png" alt="" decoding="async">
+          <img class="book-leaf book-right" src="assets/research-notebook.png" alt="" decoding="async">
+        </div>
+        <div class="fall-pages" aria-hidden="true">
+          <img class="fall-page page-near-left" src="assets/curled-research-page.png" alt="" decoding="async">
+          <img class="fall-page page-far-right" src="assets/curled-research-page.png" alt="" decoding="async">
+          <img class="fall-page page-near-right" src="assets/curled-research-page.png" alt="" decoding="async">
+        </div>
+        <div class="question-copy" aria-hidden="true"><p>Just one<br><em>more question.</em></p></div>
+        <div class="archive" aria-label="The archive of questions">
+          <div class="archive-wall" aria-hidden="true"></div>
+          <div class="archive-moulding" aria-hidden="true"></div>
+          <div class="archive-floor" aria-hidden="true"></div>
+          <div class="archive-copy">
+            <p class="eyebrow">03 / A RESTLESS MIND</p>
+            <h2>My quiet time<br>rarely means<br><em>a quiet mind.</em></h2>
+            <p>I keep coming back to the human mind.<br>How we see, feel, react, and connect.</p>
+            <span class="small-note">One question never stays one.</span>
+          </div>
+          <div class="archive-illustration" aria-hidden="true">
+            <img class="research-cabinet" src="assets/research-cabinet.png" alt="" decoding="async">
+            <div class="research-station">
+              <img class="reading-desk" src="assets/reading-desk.png" alt="" decoding="async">
+              <img class="research-notebook" src="assets/research-notebook.png" alt="" decoding="async">
+            </div>
+          </div>
+          <div class="archive-close-copy">
+            <p class="eyebrow">A CLOSER LOOK</p>
+            <h2>How does a moment<br><em>become an experience?</em></h2>
+            <p>That's the kind of question I can get lost in.</p>
+            <div class="research-topics" aria-label="Research interests"><span>Perception</span><span>Emotion</span><span>Connection</span></div>
+          </div>
+          <div class="archive-bottom"><button class="archive-continue" type="button">INTO THE WORKSHOP <span aria-hidden="true">↘</span></button></div>
+        </div>
+        <div class="thought-contact" aria-hidden="true"></div>
+        <div class="thought-traveller" aria-hidden="true">
+          <img class="thought-reading" src="assets/seeker-kneeling.png" alt="" decoding="async">
+          <img class="thought-falling" src="assets/seeker-falling.png" alt="" decoding="async">
+          <img class="thought-standing" src="assets/seeker-standing.png" alt="" decoding="async">
+        </div>
+        <div class="workshop" aria-label="The workshop of worlds">
+          <div class="workshop-backdrop" aria-hidden="true"></div>
+          <div class="workshop-floor" aria-hidden="true"></div>
+          <div class="workshop-art" aria-hidden="true">
+            <div class="workshop-light"></div>
+            <img class="creative-terminal" src="assets/creative-terminal.png" alt="" decoding="async">
+            <div class="screen-light"></div>
+            <img class="colony-world" src="assets/colony-world.png" alt="" decoding="async">
+            <div class="world-doorway"></div>
+          </div>
+          <div class="workshop-copy">
+            <p class="eyebrow">04 / THE THINGS I BUILD</p>
+            <h2>Some questions<br>become <em>worlds.</em></h2>
+            <p>Local AI companions. Games. Little systems<br class="desktop-break"> that grow into something unexpected.</p>
+            <div class="project-selector" role="group" aria-label="A couple of things I've made">
+              <button type="button" data-project="colony" aria-pressed="true" aria-controls="project-description">Colony Sim</button>
+              <button type="button" data-project="yumi" aria-pressed="false" aria-controls="project-description">Yumi</button>
+            </div>
+            <p class="project-description" id="project-description" aria-live="polite">A Colony Sim with procedural world generation. I like seeing what happens when the rules start working together.</p>
+          </div>
+          <button class="workshop-continue" type="button">STEP THROUGH THE LITTLE DOOR <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="portal-frame" aria-hidden="true"></div>
+        <div class="leisure" aria-label="Games, music and art">
+          <div class="leisure-backdrop" aria-hidden="true"></div>
+          <div class="leisure-floor" aria-hidden="true"></div>
+          <div class="leisure-copy">
+            <p class="eyebrow">05 / THE GOOD KIND OF NOISE</p>
+            <h2>Not every rabbit hole<br><em>needs a reason.</em></h2>
+            <p class="pastime-caption" aria-live="polite">FPS, hero shooters, survival, strategy. I like having something to figure out.</p>
+          </div>
+          <div class="leisure-objects" role="group" aria-label="Explore a few of my interests">
+            <button class="pastime-object pastime-music" data-pastime="music" type="button" aria-pressed="false"><img src="assets/music-headphones.png" alt="" decoding="async"><span>Music</span></button>
+            <button class="pastime-object pastime-games" data-pastime="games" type="button" aria-pressed="true"><img src="assets/game-controller.png" alt="" decoding="async"><span>Games</span></button>
+            <button class="pastime-object pastime-art" data-pastime="art" type="button" aria-pressed="false"><img src="assets/artist-sketchbook.png" alt="" decoding="async"><span>Art</span></button>
+          </div>
+          <button class="leisure-continue" type="button">ONE MORE THING <span aria-hidden="true">↓</span></button>
+        </div>
+        <div class="film-grain" aria-hidden="true"></div>
+      </div>
+    </section>
+    <section class="closing" id="closing">
+      <div class="closing-night" aria-hidden="true"></div>
+      <div class="closing-floor" aria-hidden="true"></div>
+      <div class="closing-copy">
+        <p class="eyebrow">06 / AN OPEN CHANNEL</p>
+        <h2>Room for another<br><em>curious mind.</em></h2>
+        <p>If you like conversations that accidentally become three hours long, we'll probably get along.</p>
+        <p class="discord-invitation">If you came from Discord, come say hi.</p>
+        <a class="github-link" href="https://github.com/whiteangelw" target="_blank" rel="noreferrer">MY GITHUB <span aria-hidden="true">↗</span></a>
+        <button class="restart" type="button"><span aria-hidden="true">↻</span> BEGIN AGAIN</button>
+      </div>
+      <div class="closing-art" aria-hidden="true">
+        <div class="closing-rug"></div>
+        <img class="closing-chair" src="assets/chair.png" alt="" decoding="async">
+        <div class="side-table closing-table"><img class="room-radio" src="assets/radio.png" alt=""><i></i><b></b></div>
+      </div>
+      <footer>PEDRO / WHITEANGELW <span>THANKS FOR WANDERING.</span></footer>
+    </section>
   </main>
+  <div class="loop-curtain" aria-hidden="true"></div>
+  <noscript><p class="no-script">Turn on JavaScript to follow the illustrated journey. Pedro, 24, Brazil. I love making friends. I recharge alone by gaming, studying and researching. I'm fascinated by how people see, feel, react, and connect.</p></noscript>
 </body>
 </html>
