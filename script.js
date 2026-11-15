@@ -15,9 +15,8 @@ const threshold = document.querySelector('.threshold-copy');
 const room = document.querySelector('.room');
 const roomCopy = document.querySelector('.room-copy');
 const questionBook = document.querySelector('.question-book');
-const bookLeft = document.querySelector('.book-left');
-const bookRight = document.querySelector('.book-right');
-const bookWell = document.querySelector('.book-well');
+const bookResting = document.querySelector('.book-resting');
+const bookDepth = document.querySelector('.book-depth');
 const pageTunnel = document.querySelector('.page-tunnel');
 const fallPages = document.querySelector('.fall-pages');
 const pageNearLeft = document.querySelector('.page-near-left');
@@ -38,6 +37,7 @@ const archiveCloseCopy = document.querySelector('.archive-close-copy');
 const cabinet = document.querySelector('.research-cabinet');
 const archiveBottom = document.querySelector('.archive-bottom');
 const workshop = document.querySelector('.workshop');
+const creationLight = document.querySelector('.creation-light');
 const workshopCopy = document.querySelector('.workshop-copy');
 const workshopArt = document.querySelector('.workshop-art');
 const terminal = document.querySelector('.creative-terminal');
@@ -45,11 +45,21 @@ const doorway = document.querySelector('.world-doorway');
 const portalFrame = document.querySelector('.portal-frame');
 const colonyWorld = document.querySelector('.colony-world');
 const screenLight = document.querySelector('.screen-light');
+const worldProjection = document.querySelector('.world-projection');
+const projectionVolume = document.querySelector('.projection-volume');
 const projectSelector = document.querySelector('.project-selector');
 const workshopContinue = document.querySelector('.workshop-continue');
 const leisure = document.querySelector('.leisure');
 const leisureCopy = document.querySelector('.leisure-copy');
 const leisureObjects = document.querySelector('.leisure-objects');
+const personalArt = document.querySelector('.personal-art');
+const sketchbookToggle = document.querySelector('.sketchbook-toggle');
+const sketchbookPages = document.querySelector('.sketchbook-pages');
+const artViewer = document.querySelector('.art-viewer');
+const viewerImage = document.querySelector('.viewer-image');
+const leisureExit = document.querySelector('.leisure-exit');
+const leisureContinue = document.querySelector('.leisure-continue');
+const loopWindow = document.querySelector('.loop-window');
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const mobile = window.matchMedia('(max-width: 700px)');
 
@@ -85,10 +95,10 @@ function updateThoughtSequence(r, arrival, isMobile, w, h) {
   questionBook.style.transformOrigin = '50% 95%';
   questionBook.style.transform = `perspective(900px) rotateX(${35 * (1 - unfold)}deg)`;
   questionBook.style.opacity = arrival * (1 - smooth(phase(r, .35, .48)));
-  bookLeft.style.transform = `translateX(${-unfold * 13}%) rotateY(${-unfold * 18}deg)`;
-  bookRight.style.transform = `translateX(${unfold * 13}%) rotateY(${unfold * 18}deg)`;
-  bookWell.style.width = `${16 + unfold * 18}%`;
-  bookWell.style.left = `${43 - unfold * 9}%`;
+  // Dedicated drawn states keep the spine and nested paper contours connected.
+  // The former split halves and oval opening are deliberately absent.
+  bookResting.style.opacity = 1 - unfold;
+  bookDepth.style.opacity = unfold;
   const opening = smooth(phase(r, .18, .31));
   pageTunnel.style.clipPath = `ellipse(${mix(bookWidth * .03, w * 1.8, opening)}px ${mix(bookHeight * .17, h * 1.6, opening)}px at ${bookX}px ${gutterY}px)`;
   pageTunnel.style.opacity = envelope(r, .18, .29, .66, .74);
@@ -174,6 +184,8 @@ function update() {
     archiveCloseCopy.inert = true;
     cabinet.style.opacity = '1';
     workshop.style.clipPath = '';
+    workshop.style.opacity = '1';
+    creationLight.style.opacity = '0';
     workshopCopy.style.opacity = '1';
     workshopCopy.style.transform = '';
     workshopContinue.style.opacity = '1';
@@ -189,6 +201,14 @@ function update() {
     colonyWorld.style.bottom = '';
     colonyWorld.style.right = '';
     screenLight.style.opacity = '1';
+    screenLight.style.left = '';
+    screenLight.style.top = '';
+    screenLight.style.right = '';
+    screenLight.style.bottom = '';
+    screenLight.style.width = '';
+    screenLight.style.height = '';
+    screenLight.style.transform = '';
+    worldProjection.style.opacity = '0';
     workshop.inert = false;
     workshop.style.setProperty('--workshop-detail-opacity', 1);
     workshop.style.setProperty('--workshop-art-opacity', 1);
@@ -199,6 +219,8 @@ function update() {
     leisureObjects.style.opacity = '1';
     leisureObjects.style.transform = '';
     leisure.inert = false;
+    leisureExit.style.opacity = '0';
+    leisureContinue.style.opacity = '1';
     intro.inert = false;
     room.inert = false;
     archive.inert = false;
@@ -251,8 +273,8 @@ function update() {
   roomCopy.style.opacity = smooth(phase(p, .8, .9)) * (1 - smooth(phase(research, .04, .1)));
   const archiveArrival = smooth(phase(research, .54, .66));
   archive.style.transform = 'none';
-  archive.style.opacity = archiveArrival;
-  archiveBottom.style.opacity = smooth(phase(research, .7, .76));
+  archive.style.opacity = archiveArrival * (1 - smooth(phase(making, .08, .16)));
+  archiveBottom.style.opacity = smooth(phase(research, .7, .76)) * (1 - smooth(phase(making, .02, .1)));
   archiveBottom.inert = research < .76;
   archiveCopy.style.opacity = envelope(research, .72, .78, .86, .93);
   archiveCopy.style.transform = `translateY(${(1 - smooth(phase(research, .72, .78))) * 20}px)`;
@@ -268,22 +290,29 @@ function update() {
   researchStation.style.right = `${(1 - originX - (1 - baseRight - originX) * cameraScale) * 100}%`;
   researchStation.style.bottom = `${(1 - originY - (1 - baseBottom - originY) * cameraScale) * 100 - closeup * (isMobile ? 8 : 2)}%`;
   cabinet.style.opacity = 1 - smooth(phase(research, .86, .93));
-  archiveCloseCopy.style.opacity = smooth(phase(research, .93, .99));
-  archiveTopics.style.opacity = smooth(phase(research, .95, .998));
+  const leaveStudy = 1 - smooth(phase(making, .04, .17));
+  archiveCloseCopy.style.opacity = smooth(phase(research, .93, .99)) * leaveStudy;
+  archiveTopics.style.opacity = smooth(phase(research, .95, .998)) * leaveStudy;
   archiveCopy.inert = research < .78 || research > .93;
   archiveCloseCopy.inert = research < .93;
-  const workshopArrival = smooth(phase(making, .03, .31));
-  const leadingEdge = (1 - workshopArrival) * 112;
-  workshop.style.clipPath = workshopArrival === 1 ? 'none' : `polygon(${leadingEdge}% 0, 112% 0, 112% 100%, ${leadingEdge - 12}% 100%)`;
-  workshopCopy.style.opacity = smooth(phase(making, .22, .36)) * (1 - smooth(phase(playing, .10, .27)));
-  workshopContinue.style.opacity = 1 - smooth(phase(playing, .1, .22));
-  workshopContinue.inert = playing >= .22;
+  // Match the notebook's warm illumination to the monitor. Both environments
+  // fill the frame during the dissolve, so no moving panel edge is exposed.
+  const workshopArrival = smooth(phase(making, .16, .3));
+  creationLight.style.opacity = envelope(making, .02, .12, .2, .35) * .42;
+  workshop.style.clipPath = 'none';
+  workshop.style.opacity = workshopArrival;
+  workshopCopy.style.opacity = smooth(phase(making, .3, .4)) * (1 - smooth(phase(playing, .10, .27)));
+  workshopContinue.style.opacity = smooth(phase(making, .32, .4)) * (1 - smooth(phase(playing, .1, .22)));
+  workshopContinue.inert = making < .4 || playing >= .22;
   workshopCopy.style.transform = `translateY(${(1 - smooth(phase(making, .22, .36))) * 18}px)`;
   const emergence = smooth(phase(making, .38, .72));
   colonyWorld.style.opacity = smooth(phase(making, .38, .55));
   // Keep one physical scale: the island emerges from the monitor's screen,
   // and the doorway remains attached to its painted coordinates at every size.
-  const terminalWidth = Math.min(viewportWidth * (isMobile ? .88 : .46), viewportHeight * (isMobile ? .62 : .86));
+  // Reserve room for the full island above the monitor, including a visible
+  // gap and the reading area on phones. The two props share this scale.
+  const artHeightLimit = isMobile ? (viewportHeight <= 720 ? .48 : .30) : .68;
+  const terminalWidth = Math.min(viewportWidth * (isMobile ? .88 : .46), viewportHeight * artHeightLimit);
   const terminalRight = viewportWidth * (isMobile ? .06 : .03);
   const terminalBottom = viewportHeight * (isMobile ? .09 : .12);
   terminal.style.width = `${terminalWidth}px`;
@@ -295,10 +324,28 @@ function update() {
   const islandWidth = terminalWidth * mix(.32, .54, emergence);
   const islandHeight = islandWidth * 2 / 3;
   const islandRight = terminalRight + (terminalWidth - islandWidth) / 2;
-  const islandBottom = terminalBottom + terminalWidth * 2 / 3 * mix(.48, .57, emergence);
+  const islandBottom = terminalBottom + terminalWidth * 2 / 3 * mix(.48, 1.06, emergence);
   colonyWorld.style.width = `${islandWidth}px`;
   colonyWorld.style.bottom = `${islandBottom}px`;
   colonyWorld.style.right = `${islandRight}px`;
+  // Both ends use the same live prop geometry as the doorway. The volume
+  // is painted behind the island, never as an outline or a connecting wire.
+  const sourceX = viewportWidth - terminalRight - terminalWidth * .5;
+  const sourceY = viewportHeight - terminalBottom - terminalWidth * 2 / 3 * .72;
+  const islandCenter = viewportWidth - islandRight - islandWidth / 2;
+  const projectionTop = Math.min(sourceY - 1, viewportHeight - islandBottom - islandHeight * .1);
+  const sourceHalfWidth = terminalWidth * .065;
+  const topHalfWidth = islandWidth * .42;
+  worldProjection.setAttribute('viewBox', `0 0 ${viewportWidth} ${viewportHeight}`);
+  projectionVolume.setAttribute('d', `M ${sourceX - sourceHalfWidth} ${sourceY} L ${islandCenter - topHalfWidth} ${projectionTop} Q ${islandCenter} ${projectionTop - 12} ${islandCenter + topHalfWidth} ${projectionTop} L ${sourceX + sourceHalfWidth} ${sourceY} Q ${sourceX} ${sourceY + 12} ${sourceX - sourceHalfWidth} ${sourceY} Z`);
+  worldProjection.style.opacity = smooth(phase(making, .48, .7)) * (1 - smooth(phase(playing, 0, .065)));
+  screenLight.style.left = `${sourceX}px`;
+  screenLight.style.top = `${sourceY}px`;
+  screenLight.style.right = 'auto';
+  screenLight.style.bottom = 'auto';
+  screenLight.style.width = `${terminalWidth * .4}px`;
+  screenLight.style.height = `${terminalWidth * .25}px`;
+  screenLight.style.transform = 'translate(-50%, -50%)';
   const doorX = viewportWidth - islandRight - islandWidth * .56;
   const doorY = viewportHeight - islandBottom - islandHeight * .735;
   const doorWidth = islandWidth * .05;
@@ -340,7 +387,11 @@ function update() {
   leisureCopy.style.opacity = smooth(phase(playing, .33, .5));
   leisureObjects.style.opacity = smooth(phase(playing, .4, .56));
   leisureObjects.style.transform = `translateY(${(1 - smooth(phase(playing, .4, .56))) * 24}px)`;
-  leisure.inert = playing < .46;
+  const quietReturn = smooth(phase(playing, .86, 1));
+  leisureExit.style.opacity = quietReturn;
+  leisureExit.style.setProperty('--signal-opacity', smooth(phase(playing, .91, .99)));
+  leisureContinue.style.opacity = 1 - quietReturn;
+  leisure.inert = playing < .46 || playing > .97;
 
   const atClosing = window.scrollY > start + journey.offsetHeight - 90;
   nav.classList.toggle('in-depth', atClosing || p > .18);
@@ -348,7 +399,7 @@ function update() {
   chapter.textContent = atClosing ? '06 / AN OPEN CHANNEL' : playing > .24 ? '05 / THE GOOD KIND OF NOISE' : making > .24 ? '04 / THE WORKSHOP' : research > .7 ? '03 / THE ARCHIVE' : research > .28 ? '02 / DOWN THE RABBIT HOLE' : roomActive ? '02 / THE QUIET ROOM' : p > .28 ? '01 / COME IN' : '01 / A SMALL INTRODUCTION';
   intro.inert = p > .24;
   room.inert = p < .9 || research > .14;
-  archive.inert = research < .75 || making > .31;
+  archive.inert = research < .75 || making > .12;
   nav.classList.toggle('at-closing', atClosing);
   nextTarget = atClosing ? 'start' : playing > .24 ? 'closing' : making > .24 ? 'leisure' : research > .74 ? 'workshop' : research > .22 ? 'archive' : roomActive ? 'question' : 'room';
   const nextLabels = { start: 'BEGIN AGAIN', room: 'THE QUIET ROOM', question: 'FOLLOW THE QUESTION', archive: 'INTO THE ARCHIVE', workshop: 'THE WORKSHOP', leisure: 'THE GOOD KIND OF NOISE', closing: 'AN OPEN CHANNEL' };
@@ -365,6 +416,9 @@ function measure() {
   archiveDistance = Math.min(distance - openingDistance, window.innerHeight * (mobile.matches ? 4.8 : 4.6));
   workshopDistance = Math.min(distance - openingDistance - archiveDistance, window.innerHeight * 2.8);
   windowAnchor = { x: houseSite.offsetLeft + houseSite.offsetWidth * .61, y: houseSite.offsetTop + houseSite.offsetHeight * .59 };
+  loopWindow.style.left = `${windowAnchor.x}px`;
+  loopWindow.style.top = `${windowAnchor.y}px`;
+  loopWindow.style.width = `${houseSite.offsetWidth * .35}px`;
   schedule();
 }
 function schedule() {
@@ -422,13 +476,56 @@ projectButtons.forEach(button => button.addEventListener('click', () => {
 const pastimeDescriptions = {
   games: 'FPS, hero shooters, survival, strategy. I like having something to figure out.',
   music: "My taste is all over the place. A good song doesn't need to fit a genre.",
-  art: 'I used to spend a lot of time studying digital painting. Some pieces are still on my Steam.',
+  art: 'A few drawings I kept. Open my sketchbook.',
 };
+let sketchbookOpened = false;
+let activePastime = 'games';
 const pastimeButtons = document.querySelectorAll('[data-pastime]');
 pastimeButtons.forEach(button => button.addEventListener('click', () => {
+  activePastime = button.dataset.pastime;
   pastimeButtons.forEach(item => item.setAttribute('aria-pressed', item === button ? 'true' : 'false'));
   document.querySelector('.pastime-caption').textContent = pastimeDescriptions[button.dataset.pastime];
+  const viewingArt = button.dataset.pastime === 'art';
+  personalArt.hidden = !viewingArt;
+  leisure.classList.toggle('is-viewing-art', viewingArt);
+  if (viewingArt && sketchbookOpened) {
+    sketchbookPages.inert = false;
+    document.querySelector('.pastime-caption').textContent = 'Two drawings of mine. Choose a page for a closer look.';
+  }
 }));
+
+sketchbookToggle.addEventListener('click', () => {
+  sketchbookOpened = true;
+  personalArt.classList.add('is-open');
+  sketchbookToggle.setAttribute('aria-expanded', 'true');
+  sketchbookToggle.inert = true;
+  document.querySelector('.pastime-caption').textContent = 'Two drawings of mine. Choose a page for a closer look.';
+  setTimeout(() => {
+    if (activePastime === 'art') {
+      sketchbookPages.inert = false;
+      document.querySelector('.drawing-left').focus?.({ preventScroll: true });
+    }
+  }, reducedMotion.matches ? 0 : 650);
+});
+
+const drawingDescriptions = [
+  'Drawing by Pedro: a figure with closed eyes, decorated hair and a heart motif, framed in black and gold.',
+  'Drawing by Pedro: expressive characters in a dramatic composition, framed in black and gold.',
+];
+document.querySelectorAll('.sketchbook-pages a').forEach(link => link.addEventListener('click', event => {
+  if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button > 0) return;
+  if (typeof artViewer.showModal !== 'function') return;
+  event.preventDefault();
+  const index = Number(link.dataset.drawing);
+  viewerImage.src = `assets/pedro-drawing-0${index + 1}.jpg`;
+  viewerImage.alt = drawingDescriptions[index];
+  document.querySelector('#viewer-caption').textContent = `Drawing 0${index + 1} — Pedro`;
+  artViewer.showModal();
+  document.body.classList.add('art-open');
+}));
+document.querySelector('.viewer-close').addEventListener('click', () => artViewer.close());
+artViewer.addEventListener('click', event => { if (event.target === artViewer) artViewer.close(); });
+artViewer.addEventListener('close', () => document.body.classList.remove('art-open'));
 
 let restarting = false;
 function restartJourney() {

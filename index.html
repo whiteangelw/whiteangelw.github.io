@@ -66,9 +66,9 @@
         <div class="entry-light" aria-hidden="true"></div>
         <div class="page-tunnel" aria-hidden="true"><div class="tunnel-depth"></div></div>
         <div class="question-book" aria-hidden="true">
-          <div class="book-contact"></div><div class="book-well"></div>
-          <img class="book-leaf book-left" src="assets/research-notebook.png" alt="" decoding="async">
-          <img class="book-leaf book-right" src="assets/research-notebook.png" alt="" decoding="async">
+          <div class="book-contact"></div>
+          <img class="book-resting" src="assets/research-notebook.png" alt="" decoding="async">
+          <img class="book-depth" src="assets/research-book-depth.png" alt="" decoding="async">
         </div>
         <div class="fall-pages" aria-hidden="true">
           <img class="fall-page page-near-left" src="assets/curled-research-page.png" alt="" decoding="async">
@@ -107,6 +107,7 @@
           <img class="thought-falling" src="assets/seeker-falling.png" alt="" decoding="async">
           <img class="thought-standing" src="assets/seeker-standing.png" alt="" decoding="async">
         </div>
+        <div class="creation-light" aria-hidden="true"></div>
         <div class="workshop" aria-label="The workshop of worlds">
           <div class="workshop-backdrop" aria-hidden="true"></div>
           <div class="workshop-floor" aria-hidden="true"></div>
@@ -114,6 +115,17 @@
             <div class="workshop-light"></div>
             <img class="creative-terminal" src="assets/creative-terminal.png" alt="" decoding="async">
             <div class="screen-light"></div>
+            <svg class="world-projection" aria-hidden="true" width="100%" height="100%">
+              <defs>
+                <linearGradient id="projection-light" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0" stop-color="#b7f2e4" stop-opacity=".6"/>
+                  <stop offset=".42" stop-color="#d4efe2" stop-opacity=".32"/>
+                  <stop offset="1" stop-color="#f8ebc4" stop-opacity=".2"/>
+                </linearGradient>
+                <filter id="projection-softness" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+              </defs>
+              <path class="projection-volume" fill="url(#projection-light)" filter="url(#projection-softness)"/>
+            </svg>
             <img class="colony-world" src="assets/colony-world.png" alt="" decoding="async">
             <div class="world-doorway"></div>
           </div>
@@ -143,8 +155,17 @@
             <button class="pastime-object pastime-games" data-pastime="games" type="button" aria-pressed="true"><img src="assets/game-controller.png" alt="" decoding="async"><span>Games</span></button>
             <button class="pastime-object pastime-art" data-pastime="art" type="button" aria-pressed="false"><img src="assets/artist-sketchbook.png" alt="" decoding="async"><span>Art</span></button>
           </div>
+          <div class="personal-art" aria-label="Two drawings by Pedro" hidden>
+            <div class="sketchbook-pages" id="art-pages" inert>
+              <img class="journal-base" src="assets/art-journal-open.png" alt="" decoding="async">
+              <a class="drawing-left" data-drawing="0" href="assets/pedro-drawing-01.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/pedro-drawing-01.jpg" alt="Drawing by Pedro: a figure with closed eyes, decorated hair and a heart motif, framed in black and gold." decoding="async"><span>VIEW DRAWING 01 ↗</span></a>
+              <a class="drawing-right" data-drawing="1" href="assets/pedro-drawing-02.jpg" target="_blank" rel="noopener noreferrer"><img src="assets/pedro-drawing-02.jpg" alt="Drawing by Pedro: expressive characters in a dramatic composition, framed in black and gold." decoding="async"><span>VIEW DRAWING 02 ↗</span></a>
+            </div>
+            <button class="sketchbook-toggle" type="button" aria-expanded="false" aria-controls="art-pages"><img src="assets/art-journal-closed.png" alt="A burgundy sketchbook with brass corners and a paintbrush."><span>OPEN MY SKETCHBOOK ↗</span></button>
+          </div>
           <button class="leisure-continue" type="button">ONE MORE THING <span aria-hidden="true">↓</span></button>
         </div>
+        <div class="leisure-exit" aria-hidden="true"><img class="exit-radio" src="assets/radio.png" alt=""><p>Still curious?</p></div>
         <div class="film-grain" aria-hidden="true"></div>
       </div>
     </section>
@@ -167,7 +188,12 @@
       <footer>PEDRO / WHITEANGELW <span>THANKS FOR WANDERING.</span></footer>
     </section>
   </main>
-  <div class="loop-curtain" aria-hidden="true"></div>
+  <dialog class="art-viewer" aria-labelledby="viewer-caption">
+    <button class="viewer-close" type="button">CLOSE ×</button>
+    <img class="viewer-image" alt="">
+    <p id="viewer-caption"></p>
+  </dialog>
+  <div class="loop-curtain" aria-hidden="true"><div class="loop-window"><img src="assets/house-grounded.png" alt=""></div></div>
   <noscript><p class="no-script">Turn on JavaScript to follow the illustrated journey. Pedro, 24, Brazil. I love making friends. I recharge alone by gaming, studying and researching. I'm fascinated by how people see, feel, react, and connect.</p></noscript>
 </body>
 </html>
